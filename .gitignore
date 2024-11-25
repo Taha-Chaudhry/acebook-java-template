@@ -9,5 +9,6 @@ dependency-reduced-pom.xml
 .factorypath
 .project
 .settings/
-/src/main/resources/static/application.yml
-.vscode
+*vscode*
+/src/main/resources/application.yml
+.DS_Store
