@@ -9,5 +9,5 @@ dependency-reduced-pom.xml
 .factorypath
 .project
 .settings/
-*application.yml*
 *vscode*
+/src/main/resources/application.yml
