@@ -11,3 +11,4 @@ dependency-reduced-pom.xml
 .settings/
 *vscode*
 /src/main/resources/application.yml
+.vscode
