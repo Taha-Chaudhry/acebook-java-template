@@ -23,10 +23,18 @@ public class PostsController {
         model.addAttribute("post", new Post());
         return "posts/index";
     }
+    
 
     @PostMapping("/posts")
     public RedirectView create(@ModelAttribute Post post) {
         repository.save(post);
         return new RedirectView("/posts");
     }
+
+    @DeleteMapping("/posts/{id}")
+    public RedirectView delete(@PathVariable Long id) {
+        repository.deleteById(id);
+        return new RedirectView("/posts");
+    }
+
 }
