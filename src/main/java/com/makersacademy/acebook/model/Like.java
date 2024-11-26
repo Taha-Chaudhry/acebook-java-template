@@ -1,29 +1,17 @@
 package com.makersacademy.acebook.model;
 
-
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
-@Table(name = "COMMENTS")
-public class Comment {
+@Table(name="LIKES")
+public class Like {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String content;
-
-    private int user_id;
-    @Setter
     @ManyToOne
     @JoinColumn(name = "post_id")
     private Post post;
-
 }
-

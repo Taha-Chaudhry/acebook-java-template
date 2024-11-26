@@ -14,20 +14,46 @@
     Signed in as <span sec:authentication="principal.attributes['email']"></span>
 </div>
 
-<form action="#" th:action="@{/posts}" th:object="${post}" method="post">
-    <p>Content: <input type="text" th:field="*{content}" /></p>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+<form th:action="@{/posts}" th:object="${post}" method="post">
+    <p>Content: <input type="text" th:field="*{content}" required /></p>
+    <p>
+        <input type="submit" value="Submit" />
+        <input type="reset" value="Reset" />
+    </p>
 </form>
 
 <ul th:each="post : ${posts}">
     <li>
         <span th:text="${post.content}"></span>
+
+        <span>Comments: <span th:text="${post.comments.size()}"></span></span>
+
+        <button type="button" th:onclick="|toggleCommentForm(${post.id})|">Add Comment</button>
+<!--        this is hidden initially-->
+        <form th:action="@{/posts/{postId}/comments(postId=${post.id})}" th:object="${comment}" method="post"
+              id="commentForm-[[${post.id}]]" style="display:none; margin-top: 10px;">
+            <textarea th:field="*{content}" required></textarea>
+            <input type="hidden" name="postId" th:value="${post.id}" />
+            <button type="submit">Submit Comment</button>
+        </form>
+
         <form th:action="@{/posts/{id}(id=${post.id})}" method="post" style="display:inline;">
             <input type="hidden" name="_method" value="delete" />
             <button type="submit">Delete</button>
         </form>
+
+        <!-- List comments for this post -->
+        <ul th:each="comment : ${post.comments}">
+            <li th:text="${comment.content}"></li>
+        </ul>
     </li>
 </ul>
+
+<script>
+    function toggleCommentForm(postId) {
+<!--    handle logic tmr-->
+    }
+</script>
 
 </body>
 </html>
