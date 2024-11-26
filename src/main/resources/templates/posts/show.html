@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Post Title</title>
+
+</head>
+<body>
+
+<section>
+  <p th:text="${post.content}">Post Content</p>
+  <div th:insert="~{./comments/new :: new-comment-form}"></div>
+</section>
+</body>
+</html>
